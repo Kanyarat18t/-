@@ -39,43 +39,72 @@ nav {
     color: #000000;
     text-decoration: none;
 }
-
-.maincontent {
-    background-color: rgb(109, 130, 164);
+/* สไตล์สำหรับ Carousel */
+.carousel {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    max-width: 80%;  /* ปรับขนาดให้แคบลง */
+    margin: 50px auto 50px auto !important;  /* จัดกึ่งกลางและเพิ่มระยะห่างด้านบน 50px ด้านล่าง 50px */
 }
 
-.maincontent {
-    width: 100%; /* ให้คอนเทนเนอร์ครอบเต็มความกว้าง */
-    margin: 0; /* ลบระยะขอบ */
-    padding: 0; /* ลบ Padding ภายใน */
-
+/* การจัดการภายใน Carousel */
+.carousel-inner {
+    display: flex;
+    width: 300%; /* สำหรับ 3 ภาพ */
+    animation: slide 30s infinite;
 }
 
-.maincontent-conc {
-    width: 100%;             /* ความกว้างเต็มคอนเทนเนอร์หลัก */
-    max-width: 1140px;       /* กำหนดความกว้างเท่ากับส่วนหัว */
-    height: auto;            /* ความสูงปรับตามสัดส่วนภาพ */
-    margin: 0 auto;          /* จัดกึ่งกลางแนวนอน */
-    overflow: visible;       /* ให้แสดงส่วนที่เกินได้ */
-    padding: 1rem;
+/* ขนาดของแต่ละรายการใน Carousel */
+.carousel-item {
+    min-width: 100%;
+    height: 100%;
+    max-height: 400px;  /* กำหนดความสูงสูงสุด */
 }
 
-.maincontent-conc img {
-    width: 100%;             /* ความกว้างเต็มคอนเทนเนอร์ */
-    height: auto;            /* รักษาอัตราส่วนความสูง */
-    display: block;          /* ป้องกันช่องว่างใต้ภาพ */
-    padding: 1rem;
+/* ปรับแต่งรูปภาพ */
+.carousel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;  /* ให้ภาพแสดงเต็มพื้นที่ */
 }
 
+/* Animation สำหรับการเลื่อนภาพ */
+@keyframes slide {
+    0% {
+        transform: translateX(0);
+    }
+    33.33% {
+        transform: translateX(-100%);
+    }
+    66.66% {
+        transform: translateX(-200%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
 
+/* เพิ่มพื้นที่ด้านล่างของ carousel-inner เพื่อไม่ให้แนบติดกับเนื้อหา */
+.carousel-inner {
+    padding-bottom: 20px;  /* เว้นระยะขอบด้านล่าง */
+}
 
+/* ระยะห่างระหว่าง Carousel และเนื้อหาถัดไป */
+.content {
+    background-color: #e3d5ca;  /* กำหนดสีพื้นหลัง */
+    padding-top: 20px; /* เพิ่มระยะห่างระหว่าง Carousel และ content */
+}
+
+/* จัดระยะห่างของภาพ */
 .container-img {
     display: flex;
     justify-content: space-between;
-    gap: 2rem;
-    padding: 2rem;
+    gap: 2rem; /* กำหนดระยะห่างระหว่างภาพ */
+    padding: 2rem; /* เพิ่มพื้นที่รอบข้าง */
 }
 
+/* ขนาดและสไตล์ของภาพ */
 .container-img img {
     width: calc((100% - 4rem) / 3);
     height: auto;
@@ -83,75 +112,23 @@ nav {
     border-radius: 5px;
 }
 
-/* Section ข่าวสาร */
-.news {
-    padding: 3rem 0;
-    background-color: #f4f4f4;
-    text-align: center;
-}
-
-.news h2 {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-    color: #333;
-}
-
-.news-list {
+/* ใช้ Flexbox เพื่อควบคุมระยะห่างโดยรวม */
+.container {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 2rem;
+    flex-direction: column;
+    gap: 20px; /* เว้นระยะห่างระหว่าง carousel และองค์ประกอบอื่น ๆ */
 }
 
-.news-item {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    flex: 1 1 calc(33.333% - 2rem);
-    text-align: left;
-}
-
-.news-item img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-}
-
-.news-item h3 {
-    margin: 1rem;
-    font-size: 1.25rem;
-    color: #333;
-}
-
-.news-item p {
-    margin: 0 1rem 1rem 1rem;
-    color: #666;
-    font-size: 1rem;
-}
-
-.news-item a {
-    display: inline-block;
-    margin: 0 1rem 1rem 1rem;
-    color: #007BFF;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.news-item a:hover {
-    text-decoration: underline;
-}
 
 /* ส่วนท้ายเว็บไซต์*/
 .footer-top {
     background-color: #f8f9fa;
-    padding: 2rem 0;
+    padding: 2rem ;
 }
 
 .footer-top-con {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr; /* แยกทั้งสองฝั่ง*/
     gap: 2rem;
 }
 
